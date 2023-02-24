@@ -60,16 +60,22 @@ const LayoutBase = props => {
 
   return (
     <div className="bg-hexo-background-gray dark:bg-black">
-      <CommonHead meta={meta} siteInfo={siteInfo}/>
+      <CommonHead meta={meta} siteInfo={siteInfo} />
 
       <TopNav {...props} />
 
       {headerSlot}
 
-      <main id="wrapper" className="w-full py-8 md:px-8 lg:px-24 min-h-screen relative">
+      <main
+        id="wrapper"
+        className="w-full py-8 md:px-8 lg:px-24 min-h-screen relative"
+      >
         <div
           id="container-inner"
-          className={(BLOG.LAYOUT_SIDEBAR_REVERSE ? 'flex-row-reverse' : '') + ' pt-14 w-full mx-auto lg:flex lg:space-x-4 justify-center relative z-10'}
+          className={
+            (BLOG.LAYOUT_SIDEBAR_REVERSE ? 'flex-row-reverse' : '') +
+            ' pt-14 w-full mx-auto lg:flex lg:space-x-4 justify-center relative z-10'
+          }
         >
           <div className="w-full max-w-4xl h-full">
             {onLoading ? <LoadingCover /> : children}
@@ -79,7 +85,7 @@ const LayoutBase = props => {
       </main>
 
       {/* 右下角悬浮 */}
-      <div className="bottom-12 right-1 fixed justify-end z-20  text-white bg-indigo-500 dark:bg-hexo-black-gray rounded-sm">
+      <div className="bottom-12 right-1 fixed justify-end z-20  text-white bg-amber-500 dark:bg-hexo-black-gray rounded-sm">
         <div
           className={
             (show ? 'animate__animated ' : 'hidden') +

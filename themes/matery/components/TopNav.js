@@ -32,12 +32,12 @@ const TopNav = props => {
     const navTransparent = header && scrollS < 300 // 透明导航条的条件
 
     if (navTransparent) {
-      nav && nav.classList.replace('bg-indigo-700', 'bg-none')
+      nav && nav.classList.replace('bg-amber-700', 'bg-none')
       nav && nav.classList.replace('text-black', 'text-white')
       nav && nav.classList.replace('drop-shadow-xl', 'shadow-none')
       nav && nav.classList.replace('dark:bg-hexo-black-gray', 'transparent')
     } else {
-      nav && nav.classList.replace('bg-none', 'bg-indigo-700')
+      nav && nav.classList.replace('bg-none', 'bg-amber-700')
       nav && nav.classList.replace('text-white', 'text-black')
       nav && nav.classList.replace('shadow-none', 'drop-shadow-xl')
       nav && nav.classList.replace('transparent', 'dark:bg-hexo-black-gray')
@@ -85,77 +85,101 @@ const TopNav = props => {
     changeShow(false)
   }
 
-  const searchDrawerSlot = <>
-        {categories && (
-            <section className='mt-8'>
-                <div className='text-sm flex flex-nowrap justify-between font-light px-2'>
-                    <div className='text-gray-600 dark:text-gray-200'><i className='mr-2 fas fa-th-list' />{locale.COMMON.CATEGORY}</div>
-                    <Link
-                        href={'/category'}
-                        passHref
-                        className='mb-3 text-gray-400 hover:text-black dark:text-gray-400 dark:hover:text-white hover:underline cursor-pointer'>
+  const searchDrawerSlot = (
+    <>
+      {categories && (
+        <section className="mt-8">
+          <div className="text-sm flex flex-nowrap justify-between font-light px-2">
+            <div className="text-gray-600 dark:text-gray-200">
+              <i className="mr-2 fas fa-th-list" />
+              {locale.COMMON.CATEGORY}
+            </div>
+            <Link
+              href={'/category'}
+              passHref
+              className="mb-3 text-gray-400 hover:text-black dark:text-gray-400 dark:hover:text-white hover:underline cursor-pointer"
+            >
+              {locale.COMMON.MORE} <i className="fas fa-angle-double-right" />
+            </Link>
+          </div>
+          <CategoryGroup
+            currentCategory={currentCategory}
+            categories={categories}
+          />
+        </section>
+      )}
 
-                        {locale.COMMON.MORE} <i className='fas fa-angle-double-right' />
-
-                    </Link>
-                </div>
-                <CategoryGroup currentCategory={currentCategory} categories={categories} />
-            </section>
-        )}
-
-        {tags && (
-            <section className='mt-4'>
-                <div className='text-sm py-2 px-2 flex flex-nowrap justify-between font-light dark:text-gray-200'>
-                    <div className='text-gray-600 dark:text-gray-200'><i className='mr-2 fas fa-tag' />{locale.COMMON.TAGS}</div>
-                    <Link
-                        href={'/tag'}
-                        passHref
-                        className='text-gray-400 hover:text-black  dark:hover:text-white hover:underline cursor-pointer'>
-
-                        {locale.COMMON.MORE} <i className='fas fa-angle-double-right' />
-
-                    </Link>
-                </div>
-                <div className='p-2'>
-                    <TagGroups tags={tags} currentTag={currentTag} />
-                </div>
-            </section>
-        )}
+      {tags && (
+        <section className="mt-4">
+          <div className="text-sm py-2 px-2 flex flex-nowrap justify-between font-light dark:text-gray-200">
+            <div className="text-gray-600 dark:text-gray-200">
+              <i className="mr-2 fas fa-tag" />
+              {locale.COMMON.TAGS}
+            </div>
+            <Link
+              href={'/tag'}
+              passHref
+              className="text-gray-400 hover:text-black  dark:hover:text-white hover:underline cursor-pointer"
+            >
+              {locale.COMMON.MORE} <i className="fas fa-angle-double-right" />
+            </Link>
+          </div>
+          <div className="p-2">
+            <TagGroups tags={tags} currentTag={currentTag} />
+          </div>
+        </section>
+      )}
     </>
+  )
 
   return (
-      <div id='top-nav'>
-            <SearchDrawer cRef={searchDrawer} slot={searchDrawerSlot} />
-            {/* 导航栏 */}
-            <div id='sticky-nav' className={'flex justify-center top-0 shadow-black shadow-none fixed bg-none dark:bg-hexo-black-gray text-gray-200 w-full z-30 transform transition-all duration-200'}>
-                <div className='w-full max-w-6xl flex justify-between items-center px-4 py-2'>
-                    {/* 左侧功能 */}
-                    <div className='justify-start items-center block lg:hidden '>
-                        <div onClick={toggleMenuOpen} className='w-8 justify-center items-center h-8 cursor-pointer flex lg:hidden'>
-                            {isOpen ? <i className='fas fa-times' /> : <i className='fas fa-bars' />}
-                        </div>
-                    </div>
-
-                    <div className='flex'>
-                        <Logo {...props} />
-                    </div>
-
-                    {/* 右侧功能 */}
-                    <div className='mr-1 justify-end items-center '>
-                        <div className='hidden lg:flex'> <MenuButtonGroupTop {...props} /></div>
-                        <div className='block lg:hidden'><Link href={'/search'} passHref>
-                            <i className='fas fa-search' />
-                        </Link></div>
-                    </div>
-                </div>
-
+    <div id="top-nav">
+      <SearchDrawer cRef={searchDrawer} slot={searchDrawerSlot} />
+      {/* 导航栏 */}
+      <div
+        id="sticky-nav"
+        className={
+          'flex justify-center top-0 shadow-black shadow-none fixed bg-none dark:bg-hexo-black-gray text-gray-200 w-full z-30 transform transition-all duration-200'
+        }
+      >
+        <div className="w-full max-w-6xl flex justify-between items-center px-4 py-2">
+          {/* 左侧功能 */}
+          <div className="justify-start items-center block lg:hidden ">
+            <div
+              onClick={toggleMenuOpen}
+              className="w-8 justify-center items-center h-8 cursor-pointer flex lg:hidden"
+            >
+              {isOpen ? (
+                <i className="fas fa-times" />
+              ) : (
+                <i className="fas fa-bars" />
+              )}
             </div>
+          </div>
 
-            <SideBarDrawer isOpen={isOpen} onClose={toggleMenuClose}>
-                <SideBar {...props} />
-            </SideBarDrawer>
+          <div className="flex">
+            <Logo {...props} />
+          </div>
 
+          {/* 右侧功能 */}
+          <div className="mr-1 justify-end items-center ">
+            <div className="hidden lg:flex">
+              {' '}
+              <MenuButtonGroupTop {...props} />
+            </div>
+            <div className="block lg:hidden">
+              <Link href={'/search'} passHref>
+                <i className="fas fa-search" />
+              </Link>
+            </div>
+          </div>
         </div>
+      </div>
+
+      <SideBarDrawer isOpen={isOpen} onClose={toggleMenuClose}>
+        <SideBar {...props} />
+      </SideBarDrawer>
+    </div>
   )
 }
 

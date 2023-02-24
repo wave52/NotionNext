@@ -25,13 +25,17 @@ const PaginationSimple = ({ page, totalPage }) => {
           query: router.query.s ? { s: router.query.s } : {}
         }}
         passHref
-        legacyBehavior>
+        legacyBehavior
+      >
         <button
           rel="prev"
           className={`${
-            currentPage === 1 ? ' bg-gray-300  text-gray-500 pointer-events-none ' : 'block text-white bg-indigo-700'
-          } duration-200 px-3.5 py-2 hover:border-black rounded-full`} >
-          <i className='fas fa-angle-left text-2xl'/>
+            currentPage === 1
+              ? ' bg-gray-300  text-gray-500 pointer-events-none '
+              : 'block text-white bg-amber-700'
+          } duration-200 px-3.5 py-2 hover:border-black rounded-full`}
+        >
+          <i className="fas fa-angle-left text-2xl" />
         </button>
       </Link>
       <Link
@@ -40,14 +44,17 @@ const PaginationSimple = ({ page, totalPage }) => {
           query: router.query.s ? { s: router.query.s } : {}
         }}
         passHref
-        legacyBehavior>
+        legacyBehavior
+      >
         <button
           rel="next"
           className={`${
-            +showNext ? 'text-white bg-indigo-700 ' : ' bg-gray-300 text-gray-500 pointer-events-none '
+            +showNext
+              ? 'text-white bg-amber-700 '
+              : ' bg-gray-300 text-gray-500 pointer-events-none '
           } duration-200 px-4 py-2 hover:border-black rounded-full`}
         >
-          <i className='fas fa-angle-right text-2xl'/>
+          <i className="fas fa-angle-right text-2xl" />
         </button>
       </Link>
     </div>

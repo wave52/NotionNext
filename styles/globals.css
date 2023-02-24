@@ -21,7 +21,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 ::selection {
-  background: rgba(45, 170, 219, 0.3);
+  background: rgba(207, 125, 17, 0.3);
 }
 
 .wrapper {
@@ -132,7 +132,6 @@ nav {
   backdrop-filter: blur(10px);
 }
 
-
 .medium-zoom-overlay {
   background: none !important;
   /* background: rgba(0, 0, 0, 0.01) none repeat scroll 0% 0% !important; */
@@ -174,40 +173,40 @@ nav {
   margin: -0.125em 0.25em;
 }
 
-
 /* waline评论插件夜间适配 */
-.wl-panel{
-  @apply dark:bg-black dark:border-gray-800
+.wl-panel {
+  @apply dark:bg-black dark:border-gray-800;
 }
 
-.wl-input,.wl-editor{
-  @apply dark:focus-within:bg-gray-900 dark:text-gray-200
+.wl-input,
+.wl-editor {
+  @apply dark:focus-within:bg-gray-900 dark:text-gray-200;
 }
 
 .wl-meta > span {
-  @apply dark:bg-gray-800 !important
+  @apply dark:bg-gray-800 !important;
 }
 
 /* 固定两行 */
 .text-line-2 {
-    overflow : hidden;
-	text-overflow: ellipsis;
-	display: -webkit-box;
-	-webkit-line-clamp: 2;
-	-webkit-box-orient: vertical;
-	word-wrap: break-word;
-	word-break: break-all;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  word-wrap: break-word;
+  word-break: break-all;
 }
 
-.nobelium{
-    @apply flex flex-col justify-between
+.nobelium {
+  @apply flex flex-col justify-between;
 }
 
-.nobelium .notion-code{
-    @apply max-w-2xl;
+.nobelium .notion-code {
+  @apply max-w-2xl;
 }
 
-.next #announcement-content *{
- font-size:10px !important;
- line-height:1.5 !important;
+.next #announcement-content * {
+  font-size: 10px !important;
+  line-height: 1.5 !important;
 }
