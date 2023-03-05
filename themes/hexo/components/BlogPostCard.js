@@ -1,6 +1,7 @@
 import BLOG from '@/blog.config'
 import Link from 'next/link'
 import React from 'react'
+import NotionIcon from '@/components/NotionIcon'
 import TagItemMini from './TagItemMini'
 import CONFIG_HEXO from '../config_hexo'
 import NotionPage from '@/components/NotionPage'
@@ -37,7 +38,9 @@ const BlogPostCard = ({ post, showSummary, index, siteInfo }) => {
             showPreview ? 'text-center' : ''
           } leading-tight text-gray-600 dark:text-gray-100 hover:text-amber-500 dark:hover:text-amber-500`}
         >
-          {post.title}
+
+            <NotionIcon icon={post.pageIcon} />
+            {post.title}
         </Link>
 
         <div
